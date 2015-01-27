@@ -4,5 +4,6 @@
     <string name="app_name">KOSMOSclient</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="submit_japanese">送信</string>
 
 </resources>
