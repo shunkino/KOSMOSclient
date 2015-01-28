@@ -31,4 +31,24 @@
         android:layout_below="@+id/textArea"
         android:layout_centerHorizontal="true" />
 
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/isbnField"
+        android:layout_alignParentBottom="true"
+        android:textIsSelectable="false"
+        android:hint="@string/input_hint"
+        android:textSize="21dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/barcodeBtn"
+        android:id="@+id/scanCode"
+        android:gravity="center"
+        android:layout_above="@+id/button"
+        android:layout_centerHorizontal="true" />
+
 </RelativeLayout>
