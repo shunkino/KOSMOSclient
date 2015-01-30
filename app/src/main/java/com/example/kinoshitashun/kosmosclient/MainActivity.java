@@ -127,7 +127,6 @@ public class MainActivity extends FragmentActivity {
             textArea = (TextView) rootView.findViewById(R.id.textArea);
             resultView = (TextView) rootView.findViewById(R.id.resultView);
             isbnField = (EditText) rootView.findViewById(R.id.isbnField);
-            Log.d("dbbb", EXTRA_CODE);
             if (!getArguments().getSerializable(EXTRA_CODE).equals("Start")) {
                 isbnField.setText((String) getArguments().getSerializable(EXTRA_CODE));
             }else {
@@ -192,14 +191,11 @@ public class MainActivity extends FragmentActivity {
             try {
                 // create HttpClient
                 HttpClient httpclient = new DefaultHttpClient();
-
                 // make GET request to the given URL
                 HttpResponse httpResponse = httpclient.execute(new HttpGet(url));
-
                 // receive response as inputStream
                 inputStream = httpResponse.getEntity().getContent();
-
-                // convert inputstream to string
+                // convert input stream to string
                 if(inputStream != null) {
                     result = convertInputStreamToString(inputStream);
                 } else {
@@ -224,12 +220,10 @@ public class MainActivity extends FragmentActivity {
         }
         @Override
         public void onClick(View rootView){
-//            Log.d("debug msg","clicked");
             switch(rootView.getId()){
                 case R.id.button:
                     if (!isbnField.getText().toString().isEmpty()) {
                         if(isConnectedToInternet) {
-//                            isbnField.setBackgroundColor(0xFFFFFF);
                             textArea.setBackgroundColor(0xFF00CC00);
                             textArea.setText("You are connected to Internet");
                             Toast.makeText(contextVar, "Please wait for a second...", Toast.LENGTH_LONG).show();
@@ -241,29 +235,13 @@ public class MainActivity extends FragmentActivity {
                         }
                     } else {
                         Toast.makeText(contextVar, "ISBNを入力してください", Toast.LENGTH_LONG).show();
-                        isbnField.setText("testes");
-//                        isbnField.setBackgroundColor(0xFF7F50);
                     }
                     break;
                 case R.id.scanCode:
-                    Log.d("debug","code scan button has been pushed");
                     IntentIntegrator scanIntegrator = new IntentIntegrator(getActivity());
                     scanIntegrator.initiateScan();
                     break;
             }
         }
-//        @Override
-//        public void onActivityResult (int requestCode, int resultCode, Intent intent) {
-//            super.onActivityResult(requestCode, resultCode, intent);
-//            System.out.println("never here");
-//            IntentResult scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
-//            if (scanResult != null) {
-//                String scanStr = scanResult.toString();
-//                Log.d("debug", scanStr);
-//                isbnField.setText(scanStr);
-//            }else {
-//                Toast.makeText(contextVar, "バーコードを正常に読み取れませんでした", Toast.LENGTH_LONG).show();
-//            }
-//        }
     }
 }
